@@ -1,5 +1,6 @@
 import React from 'react'
 import ComponentNameListView from '../Components/ComponentNameListView'
+import ComponentFailureOptionView from '../Components/ComponentFailureOptionView'
 import styled, { css } from 'styled-components'
 
 const Title = styled.h1`
@@ -12,6 +13,7 @@ const MainContainer = () => {
     <>
       <Title>PMBD Data View</Title>
       <ComponentNameListView />
+      <ComponentFailureOptionView />
     </>
   )
 }
