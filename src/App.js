@@ -1,9 +1,10 @@
 import React from 'react'
+import MainContainer from './Container/MainContainer'
 
 const App = () => {
   return (
     <>
-      <h1>Hi</h1>
+      <MainContainer />
     </>
   )
 }
