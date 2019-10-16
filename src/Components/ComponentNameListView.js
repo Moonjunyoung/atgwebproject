@@ -1,33 +1,23 @@
-import React, { useState } from 'react'
-import Select from 'react-select'
-import '../css/ComponentNameListView.css'
+import React, { useState } from "react";
+import Select from "react-select";
+import "../css/ComponentNameListView.css";
 
-const customStyles = {
-  option: (provided, state) => ({
-    ...provided,
-    borderBottom: '1px dotted pink',
-    color: state.isSelected ? 'red' : 'blue',
-    padding: 20
-  })
-}
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
 
 const ComponentNameListView = () => {
   const handleSelect = newvalue => {
-    console.log(newvalue)
-  }
+    console.log(newvalue);
+  };
 
   return (
     <div>
-      <Select
-        onChange={handleSelect}
-        isMulti
-        name='colors'
-        styles={customStyles}
-        className='basic-multi-select'
-        classNamePrefix='select'
-      />
+      <Select onChange={handleSelect} options={options} id="root-Selectbox" />
     </div>
-  )
-}
+  );
+};
 
-export default ComponentNameListView
+export default ComponentNameListView;

@@ -28,9 +28,7 @@ const MainContainer = () => {
         <ComponentDiscoveryMethods />
       </Container>
 
-      <Container>
-        <ComponentResultView></ComponentResultView>
-      </Container>
+      <ComponentResultView></ComponentResultView>
     </>
   );
 };
