@@ -1,12 +1,12 @@
-import React from 'react'
-import ComponentNameListView from '../Components/ComponentNameListView'
-import ComponentFailureOptionView from '../Components/ComponentFailureOptionView'
-import styled, { css } from 'styled-components'
+import React from "react";
+import ComponentNameListView from "../Components/ComponentNameListView";
+import ComponentFailureOptionView from "../Components/ComponentFailureOptionView";
+import styled, { css } from "styled-components";
 
 const Title = styled.h1`
   text-align: center;
   color: grey;
-`
+`;
 
 const MainContainer = () => {
   return (
@@ -15,7 +15,7 @@ const MainContainer = () => {
       <ComponentNameListView />
       <ComponentFailureOptionView />
     </>
-  )
-}
+  );
+};
 
-export default MainContainer
+export default MainContainer;
