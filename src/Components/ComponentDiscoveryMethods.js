@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Container from "@material-ui/core/Container";
 import MultiSelect from "@kenshooui/react-multi-select";
 import "@kenshooui/react-multi-select/dist/style.css";
-import "../css/ComponentFailureOptionView.css";
+import "../css/ComponentDiscoveryMethods.css";
 
-class ComponentFailureOptionView extends Component {
+class ComponentDiscoveryMethods extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +27,7 @@ class ComponentFailureOptionView extends Component {
     return (
       <Container id="root-box">
         <div>
-          <h1 className="title">Failure Option</h1>
+          <h1 className="title">DiscoveryMethods</h1>
           <MultiSelect
             items={items}
             selectedItems={selectedItems}
@@ -39,4 +39,4 @@ class ComponentFailureOptionView extends Component {
   }
 }
 
-export default ComponentFailureOptionView;
+export default ComponentDiscoveryMethods;

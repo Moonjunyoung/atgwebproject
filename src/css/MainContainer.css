@@ -1,0 +1,9 @@
+#Mainroot-box {
+  display: flex;
+  width: 2000px;
+  height: 600px;
+  margin-top: 5%;
+  margin-left: 25%;
+
+  justify-content: space-around;
+}
