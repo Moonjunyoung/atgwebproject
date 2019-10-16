@@ -5,6 +5,7 @@ import ComponentFailureOptionView from "../Components/ComponentFailureOptionView
 import ComponentDegradationMechanism from "../Components/ComponentDegradationMechanism";
 import ComponentDegradationInfluence from "../Components/ComponentDegradationInfluence";
 import ComponentDiscoveryMethods from "../Components/ComponentDiscoveryMethods";
+import ComponentResultView from "../Components/ComponentResultView";
 
 import "../css/MainContainer.css";
 
@@ -25,6 +26,10 @@ const MainContainer = () => {
         <ComponentDegradationMechanism />
         <ComponentDegradationInfluence />
         <ComponentDiscoveryMethods />
+      </Container>
+
+      <Container>
+        <ComponentResultView></ComponentResultView>
       </Container>
     </>
   );
