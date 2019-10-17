@@ -4,10 +4,16 @@ import MultiSelect from "@kenshooui/react-multi-select";
 import "@kenshooui/react-multi-select/dist/style.css";
 import "../css/ComponentFailureOptionView.css";
 
+function MakeOption(x) {
+  return { id: x, label: x };
+}
+
 class ComponentFailureOptionView extends Component {
   constructor(props) {
     super(props);
+
     this.handleChange = this.handleChange.bind(this);
+
     this.state = {
       items: [
         { id: 0, label: "item 1" },
@@ -20,16 +26,22 @@ class ComponentFailureOptionView extends Component {
   }
 
   handleChange(selectedItems) {
+    this.props.SelectedFailureOptiondispatch(selectedItems);
     this.setState({ selectedItems });
   }
+
   render() {
-    const { items, selectedItems } = this.state;
+    const FailureList = this.props.SelectedFailureOption;
+    console.log(FailureList);
+
+    const { selectedItems, SelectedComponentName } = this.state;
+
     return (
       <Container id="root-box">
         <div>
           <h1 className="title">Failure Option</h1>
           <MultiSelect
-            items={items}
+            items={FailureList.map(x => MakeOption(x))}
             selectedItems={selectedItems}
             onChange={this.handleChange}
           />

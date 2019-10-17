@@ -6,9 +6,12 @@ function MakeOption (x) {
   return { value: x, label: x }
 }
 
-const ComponentNameListView = ({ ComponentNamedata }) => {
+const ComponentNameListView = ({
+  ComponentNamedata,
+  SelectedComponentdispatch
+}) => {
   const handleSelect = newvalue => {
-    console.log(newvalue.value)
+    SelectedComponentdispatch(newvalue.value)
   }
 
   return (
