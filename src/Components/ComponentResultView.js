@@ -53,69 +53,85 @@ class ComponentResultView extends Component {
         columns: [
           {
             title: "Degration Progress",
-            field: "Degration Progress",
+            field: "DegrationProgress",
             headerStyle: {
               fontWeight: "bold",
 
               border: "1px solid black",
-
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
           {
             title: "Failure Timing",
-            field: "Failure Timing",
+            field: "FailureTiming",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
           {
             title: "Time Code",
-            field: "Time Code",
+            field: "TimeCode",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
           {
             title: "Relative Frequency",
-            field: "Relative Frequency",
+            field: "RelativeFrequency",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
           {
             title: "Repair Time",
-            field: "Repair Time",
+            field: "RepairTime",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
           {
             title: "Fail Weight",
-            field: "Fail Weight",
+            field: "FailWeight",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
-        
 
           {
             title: "Strength",
@@ -125,16 +141,23 @@ class ComponentResultView extends Component {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
+
           {
             title: "Def Color",
-            field: "Def Color",
+            field: "DefColor",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
@@ -145,40 +168,51 @@ class ComponentResultView extends Component {
               fontWeight: "bold",
 
               border: "1px solid black",
-
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
           {
             title: "Inst Col",
-            field: "Inst Col",
+            field: "InstCol",
             headerStyle: {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
           {
             title: "Def Fail Weight",
-            field: "Def Fail Weight",
+            field: "DefFailWeight",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
-        
+
           {
             title: "Task Metric",
-            field: "Task Metric",
+            field: "TaskMetric",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
@@ -188,8 +222,11 @@ class ComponentResultView extends Component {
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
@@ -199,18 +236,24 @@ class ComponentResultView extends Component {
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
 
           {
-            title: "Component Type ID",
-            field: "Component Type ID",
+            title: "ComponentType ID",
+            field: "ComponentTypeID",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
@@ -220,18 +263,24 @@ class ComponentResultView extends Component {
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
           {
             title: "Last Changed In Version",
-            field: "Last Changed In Version",
+            field: "LastChangedInVersion",
             type: "numeric",
             headerStyle: {
               fontWeight: "bold",
-              textAlign: "center",
 
+              border: "1px solid black",
+            },
+            cellStyle: {
+              fontWeight: "bold",
               border: "1px solid black",
             },
           },
@@ -242,7 +291,10 @@ class ComponentResultView extends Component {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
           {
@@ -252,23 +304,51 @@ class ComponentResultView extends Component {
               fontWeight: "bold",
 
               border: "1px solid black",
-              textAlign: "center",
+            },
+            cellStyle: {
+              fontWeight: "bold",
+              border: "1px solid black",
             },
           },
-
-
         ],
       };
     }
   }
   render() {
-    const totaldata=this.props.TableViewData;
-    console.log(totaldata)
+    const totaldata = this.props.TableViewData;
+    console.log(totaldata);
+
     return (
       <MaterialTable
-        title="Data"
+        title="Data_Table"
         columns={this.state.columns}
         icons={tableIcons}
+        options={{
+          rowStyle: {
+            backgroundColor: "#EEE",
+          },
+        }}
+        data={totaldata.map(item => ({
+          DegrationProgress: item.DegradationProgression,
+          FailureTiming: item.FailureTiming,
+          TimeCode: item.TimeCode,
+          RelativeFrequency: item.RelativeFrequency,
+          RepairTime: item.RepairTime,
+          FailWeight: item.FailWeight,
+          Strength: item.Strength,
+          DefColor: item.DefColor,
+          NewVulnerability: item.NewVulnerability,
+          InstCol: item.InstCol,
+          DefFailWeight: item.DefFailWeight,
+          TaskMetric: item.TaskMetric,
+          Attenuation: item.Attenuation,
+          AddToList: item.AddToList,
+          ComponentTypeID: item.ComponentTypeID,
+          Counter: item.Counter,
+          LastChangedInVersion: item.LastChangedInVersion,
+          CommonDegradation: item.CommonDegradation,
+          Graph: item.Graphics,
+        }))}
       />
     );
   }
