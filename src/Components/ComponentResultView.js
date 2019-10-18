@@ -52,37 +52,6 @@ class ComponentResultView extends Component {
       this.state = {
         columns: [
           {
-            title: "Component Type ID",
-            field: "Component Type ID",
-            type: "numeric",
-            headerStyle: {
-              fontWeight: "bold",
-              textAlign: "center",
-              border: "1px solid black",
-            },
-          },
-          {
-            title: "Counter",
-            field: "Counter",
-            type: "numeric",
-            headerStyle: {
-              fontWeight: "bold",
-              textAlign: "center",
-              border: "1px solid black",
-            },
-          },
-          {
-            title: "Last Changed In Version",
-            field: "Last Changed In Version",
-            type: "numeric",
-            headerStyle: {
-              fontWeight: "bold",
-              textAlign: "center",
-
-              border: "1px solid black",
-            },
-          },
-          {
             title: "Degration Progress",
             field: "Degration Progress",
             headerStyle: {
@@ -146,16 +115,7 @@ class ComponentResultView extends Component {
               textAlign: "center",
             },
           },
-          {
-            title: "CommonDegradation",
-            field: "CommonDegradation",
-            headerStyle: {
-              fontWeight: "bold",
-
-              border: "1px solid black",
-              textAlign: "center",
-            },
-          },
+        
 
           {
             title: "Strength",
@@ -190,6 +150,16 @@ class ComponentResultView extends Component {
             },
           },
           {
+            title: "Inst Col",
+            field: "Inst Col",
+            headerStyle: {
+              fontWeight: "bold",
+
+              border: "1px solid black",
+              textAlign: "center",
+            },
+          },
+          {
             title: "Def Fail Weight",
             field: "Def Fail Weight",
             type: "numeric",
@@ -200,16 +170,7 @@ class ComponentResultView extends Component {
               textAlign: "center",
             },
           },
-          {
-            title: "Inst Col",
-            field: "Inst Col",
-            headerStyle: {
-              fontWeight: "bold",
-
-              border: "1px solid black",
-              textAlign: "center",
-            },
-          },
+        
           {
             title: "Task Metric",
             field: "Task Metric",
@@ -242,11 +203,67 @@ class ComponentResultView extends Component {
               border: "1px solid black",
             },
           },
+
+          {
+            title: "Component Type ID",
+            field: "Component Type ID",
+            type: "numeric",
+            headerStyle: {
+              fontWeight: "bold",
+              textAlign: "center",
+              border: "1px solid black",
+            },
+          },
+          {
+            title: "Counter",
+            field: "Counter",
+            type: "numeric",
+            headerStyle: {
+              fontWeight: "bold",
+              textAlign: "center",
+              border: "1px solid black",
+            },
+          },
+          {
+            title: "Last Changed In Version",
+            field: "Last Changed In Version",
+            type: "numeric",
+            headerStyle: {
+              fontWeight: "bold",
+              textAlign: "center",
+
+              border: "1px solid black",
+            },
+          },
+          {
+            title: "CommonDegradation",
+            field: "CommonDegradation",
+            headerStyle: {
+              fontWeight: "bold",
+
+              border: "1px solid black",
+              textAlign: "center",
+            },
+          },
+          {
+            title: "Graph",
+            field: "Graph",
+            headerStyle: {
+              fontWeight: "bold",
+
+              border: "1px solid black",
+              textAlign: "center",
+            },
+          },
+
+
         ],
       };
     }
   }
   render() {
+    const totaldata=this.props.TableViewData;
+    console.log(totaldata)
     return (
       <MaterialTable
         title="Data"

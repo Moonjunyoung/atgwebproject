@@ -104,11 +104,51 @@ const CreateDiscoveryMethods = (
   sorteddata = _.uniq(sorteddata)
   return sorteddata
 }
+
+const CreateTableViewdata = (
+  ComponentTypeName,
+  FailureLocation,
+  DegradationMechanism,
+  DegradationInfluence,
+  DiscoveryMethods
+) => {
+  let sorteddata = []
+  for (let i = 0; i < FailureLocation.length; i++) {
+    const failuredata = FailureLocation[i].label
+    for (let j = 0; j < DegradationMechanism.length; j++) {
+      const Mechdata = DegradationMechanism[j].label
+      for (let k = 0; k < DegradationInfluence.length; k++) {
+        const Infludata = DegradationInfluence[k].label
+        for(let p=0;p<DiscoveryMethods.length;p++){
+          const MethodsData=DiscoveryMethods[p].label;
+        for (let z = 0; z < pmbddata.length; z++) {
+          if (ComponentTypeName == pmbddata[z].ComponentTypeName) {
+            if (failuredata == pmbddata[z].FailureLocation) {
+              if (Mechdata == pmbddata[z].DegradationMechanism) {
+                if (Infludata == pmbddata[z].DegradationInfluence) {
+                  if(MethodsData==pmbddata[z].DiscoveryMethods){
+                    sorteddata.push(pmbddata[z])
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  sorteddata = _.uniq(sorteddata)
+  return sorteddata
+
+
+}
 // 액션타입설정
 const SELECTCOMPONENTNAME = 'ComponentNameListView/SELECTCOMPONENTNAME'
 const SELECTFAILUREOPTION =
   'ComponentDegradationFailureOption/SelectedFailureOptiondispatch'
 const SELECTMECHANISM = 'ComponentDegradationMechanism/SELECTMECHANISM'
+const SELECTMETHOD = 'ComponentDiscoveryMethods/SELECTMETHOD'
 
 const SELECTINFLUENCE = 'ComponentDiscoveryMethods/SELECTINFLUENCE'
 // 액션생성함수
@@ -129,6 +169,10 @@ export const SelectedDegradationInfluncedispatch = selecteditem => ({
   type: SELECTINFLUENCE,
   selecteditem
 })
+export const SelectedDiscoveryMethodsdispatch = selecteditem => ({
+  type: SELECTMETHOD,
+  selecteditem
+})
 
 // 사용자가 컴포넌트이름을 선택할시 발생시켜야됨
 
@@ -141,13 +185,17 @@ const initialState = {
   SelectedUserFailureOption: [],
   SelectedUserDegradtionMech: [],
   SeletcedUserInfluence: [],
+  SeletcedUserDiscoveryMethod: [],
   SelectedFailureOption: [],
   SelectedMechanism: [],
   SelectedInfluence: [],
-  SelectedDiscovery: []
+  SelectedDiscovery: [],
+  TableViewData: []
 }
 
 const MainContainer = (state = initialState, action) => {
+  console.log(action);
+
   switch (action.type) {
     case SELECTCOMPONENTNAME:
       return {
@@ -191,7 +239,19 @@ const MainContainer = (state = initialState, action) => {
         ),
         SeletcedUserInfluence: action.selecteditem
       }
+    case SELECTMETHOD:
+      return {
+        ...state,
 
+        TableViewData: CreateTableViewdata(
+          state.SelectedComponentName,
+          state.SelectedUserFailureOption,
+          state.SelectedUserDegradtionMech,
+          state.SeletcedUserInfluence,
+          action.selecteditem
+        ),
+        SeletcedUserDiscoveryMethod: action.selecteditem
+      }
     default:
       return state
   }

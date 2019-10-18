@@ -18,6 +18,8 @@ class ComponentDiscoveryMethods extends Component {
   }
 
   handleChange (selectedItems) {
+    this.props.SelectedDiscoveryMethodsdispatch(selectedItems)
+
     this.setState({ selectedItems })
   }
   render () {

@@ -4,7 +4,8 @@ import {
   SelectedComponentdispatch,
   SelectedFailureOptiondispatch,
   SelectedDegradationMechdispatch,
-  SelectedDegradationInfluncedispatch
+  SelectedDegradationInfluncedispatch,
+  SelectedDiscoveryMethodsdispatch
 } from '../modules/MainContainer'
 import { bindActionCreators } from 'redux'
 
@@ -34,7 +35,9 @@ const MainContainer = ({
   SelectedDegradationMechdispatch,
   SelectedInfluence,
   SelectedDegradationInfluncedispatch,
-  SelectedDiscovery
+  SelectedDiscovery,
+  SelectedDiscoveryMethodsdispatch,
+  TableViewData
 }) => {
   return (
     <>
@@ -58,10 +61,13 @@ const MainContainer = ({
             SelectedDegradationInfluncedispatch
           }
         />
-        <ComponentDiscoveryMethods SelectedDiscovery={SelectedDiscovery}/>
+        <ComponentDiscoveryMethods
+          SelectedDiscovery={SelectedDiscovery}
+          SelectedDiscoveryMethodsdispatch={SelectedDiscoveryMethodsdispatch}
+        />
       </Container>
 
-      <ComponentResultView />
+      <ComponentResultView TableViewData={TableViewData} />
     </>
   )
 }
@@ -74,7 +80,8 @@ const mapStateToProps = state => ({
   SelectedMechanism: state.MainContainer.SelectedMechanism,
   SelectedInfluence: state.MainContainer.SelectedInfluence,
   SelectedMethod: state.MainContainer.SelectedMethod,
-  SelectedDiscovery:state.MainContainer.SelectedDiscovery
+  SelectedDiscovery: state.MainContainer.SelectedDiscovery,
+  TableViewData:state.MainContainer.TableViewData
 })
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -82,7 +89,8 @@ const mapDispatchToProps = dispatch =>
       SelectedComponentdispatch,
       SelectedFailureOptiondispatch,
       SelectedDegradationMechdispatch,
-      SelectedDegradationInfluncedispatch
+      SelectedDegradationInfluncedispatch,
+      SelectedDiscoveryMethodsdispatch
     },
     dispatch
   )
