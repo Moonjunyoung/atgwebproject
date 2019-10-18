@@ -17,6 +17,8 @@ class ComponentDegradationInfluence extends Component {
   }
 
   handleChange (selectedItems) {
+    this.props.SelectedDegradationInfluncedispatch(selectedItems) // 선택한아이템을 액션함수실행
+
     this.setState({ selectedItems })
   }
   render () {

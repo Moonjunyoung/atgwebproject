@@ -63,9 +63,6 @@ const CreateDegradationInfluence = (
         // pmbd데이터로 선택한것들을 찾음
         if (componentName == pmbddata[z].ComponentTypeName) {
           if (mechanismdata == pmbddata[z].DegradationMechanism) {
-            console.log(pmbddata[z])
-            console.log(failuredata)
-            console.log(pmbddata[z].FailureLocation)
             if (failuredata.label == pmbddata[z].FailureLocation) {
               sorteddata.push(pmbddata[z].DegradationInfluence)
             }
@@ -77,12 +74,43 @@ const CreateDegradationInfluence = (
   sorteddata = _.uniq(sorteddata)
   return sorteddata
 }
-
+const CreateDiscoveryMethods = (
+  componentName,
+  failureoption,
+  DegradationMechanism,
+  DegradationInfluence
+) => {
+  let sorteddata = []
+  for (let i = 0; i < failureoption.length; i++) {
+    const failuredata = failureoption[i].label
+    for (let j = 0; j < DegradationMechanism.length; j++) {
+      const Mechdata = DegradationMechanism[j].label
+      for (let k = 0; k < DegradationInfluence.length; k++) {
+        const Infludata = DegradationInfluence[k].label
+        for (let z = 0; z < pmbddata.length; z++) {
+          if (componentName == pmbddata[z].ComponentTypeName) {
+            if (failuredata == pmbddata[z].FailureLocation) {
+              if (Mechdata == pmbddata[z].DegradationMechanism) {
+                if (Infludata == pmbddata[z].DegradationInfluence) {
+                  sorteddata.push(pmbddata[z].DiscoveryMethods)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  sorteddata = _.uniq(sorteddata)
+  return sorteddata
+}
 // 액션타입설정
 const SELECTCOMPONENTNAME = 'ComponentNameListView/SELECTCOMPONENTNAME'
 const SELECTFAILUREOPTION =
   'ComponentDegradationFailureOption/SelectedFailureOptiondispatch'
 const SELECTMECHANISM = 'ComponentDegradationMechanism/SELECTMECHANISM'
+
+const SELECTINFLUENCE = 'ComponentDiscoveryMethods/SELECTINFLUENCE'
 // 액션생성함수
 export const SelectedComponentdispatch = selectitem => ({
   type: SELECTCOMPONENTNAME,
@@ -97,6 +125,10 @@ export const SelectedDegradationMechdispatch = selecteditem => ({
   type: SELECTMECHANISM,
   selecteditem
 })
+export const SelectedDegradationInfluncedispatch = selecteditem => ({
+  type: SELECTINFLUENCE,
+  selecteditem
+})
 
 // 사용자가 컴포넌트이름을 선택할시 발생시켜야됨
 
@@ -108,11 +140,11 @@ const initialState = {
   SelectedComponentName: '',
   SelectedUserFailureOption: [],
   SelectedUserDegradtionMech: [],
-  SeletedUserInfluence: [],
+  SeletcedUserInfluence: [],
   SelectedFailureOption: [],
   SelectedMechanism: [],
   SelectedInfluence: [],
-  SelectedMethod: []
+  SelectedDiscovery: []
 }
 
 const MainContainer = (state = initialState, action) => {
@@ -148,6 +180,18 @@ const MainContainer = (state = initialState, action) => {
         ),
         SelectedUserDegradtionMech: action.selecteditem
       }
+    case SELECTINFLUENCE:
+      return {
+        ...state,
+        SelectedDiscovery: CreateDiscoveryMethods(
+          state.SelectedComponentName,
+          state.SelectedUserFailureOption,
+          state.SelectedUserDegradtionMech,
+          action.selecteditem
+        ),
+        SeletcedUserInfluence: action.selecteditem
+      }
+
     default:
       return state
   }
