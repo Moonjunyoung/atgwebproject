@@ -1,33 +1,32 @@
-import React, { Component } from "react";
-import Container from "@material-ui/core/Container";
-import MultiSelect from "@kenshooui/react-multi-select";
-import "@kenshooui/react-multi-select/dist/style.css";
-import "../css/ComponentDegradationMechanism.css";
+import React, { Component } from 'react'
+import Container from '@material-ui/core/Container'
+import MultiSelect from '@kenshooui/react-multi-select'
+import '@kenshooui/react-multi-select/dist/style.css'
+import '../css/ComponentDegradationMechanism.css'
 
-function MakeOption(x) {
-  return { id: x, label: x };
+function MakeOption (x) {
+  return { id: x, label: x }
 }
 class ComponentDegradationInfluence extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
+  constructor (props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
     this.state = {
-      selectedItems: [],
-    };
+      selectedItems: []
+    }
   }
 
-  handleChange(selectedItems) {
-    this.setState({ selectedItems });
+  handleChange (selectedItems) {
+    this.setState({ selectedItems })
   }
-  render() {
-    const { selectedItems } = this.state;
-    const SelectedInfluence = this.props.SelectedInfluence;
+  render () {
+    const { selectedItems } = this.state
+    const SelectedInfluence = this.props.SelectedInfluence
 
-    console.log(SelectedInfluence);
     return (
-      <Container id="root-box">
+      <Container id='root-box'>
         <div>
-          <h1 className="title">Degradation Influence</h1>
+          <h1 className='title'>Degradation Influence</h1>
           <MultiSelect
             items={SelectedInfluence.map(x => MakeOption(x))}
             selectedItems={selectedItems}
@@ -35,8 +34,8 @@ class ComponentDegradationInfluence extends Component {
           />
         </div>
       </Container>
-    );
+    )
   }
 }
 
-export default ComponentDegradationInfluence;
+export default ComponentDegradationInfluence

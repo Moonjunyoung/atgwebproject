@@ -1,51 +1,51 @@
-import * as _ from "lodash";
+import * as _ from 'lodash'
 // 액션타입 지정
 
-const pmbddata = require("../Data/pmdb.json");
+const pmbddata = require('../Data/pmdb.json')
 
 const ComponentNameDataCreate = array => {
-  let tmp = [];
-  let ComponentsName = [];
+  let tmp = []
+  let ComponentsName = []
   for (let i = 0; i < array.length; i++) {
-    let uniqdata = array[i].ComponentTypeName.trim();
-    tmp.push(uniqdata);
+    let uniqdata = array[i].ComponentTypeName.trim()
+    tmp.push(uniqdata)
   }
-  ComponentsName = _.uniq(tmp);
-  return ComponentsName;
-};
+  ComponentsName = _.uniq(tmp)
+  return ComponentsName
+}
 
 const CreateFailureOptionData = (selecteditem, PmbdData) => {
-  let sorteddata = [];
-  let Selecteditem = selecteditem.trim();
+  let sorteddata = []
+  let Selecteditem = selecteditem.trim()
 
   for (let j = 0; j < PmbdData.length; j++) {
-    let ComponentNameData = PmbdData[j].ComponentTypeName;
+    let ComponentNameData = PmbdData[j].ComponentTypeName
     if (ComponentNameData == Selecteditem) {
-      sorteddata.push(PmbdData[j].FailureLocation);
+      sorteddata.push(PmbdData[j].FailureLocation)
     }
   }
-  sorteddata = _.uniq(sorteddata);
-  return sorteddata;
-};
+  sorteddata = _.uniq(sorteddata)
+  return sorteddata
+}
 
-//componentNametype과 failureOption값과비교해야됨
+// componentNametype과 failureOption값과비교해야됨
 const CreateDegradationMechanism = (componentName, selecteditem, PmbdData) => {
-  let sorteddata = [];
+  let sorteddata = []
 
   for (let i = 0; i < selecteditem.length; i++) {
-    const selectitem = selecteditem[i].label;
+    const selectitem = selecteditem[i].label
     for (let j = 0; j < PmbdData.length; j++) {
       if (
         selectitem == PmbdData[j].FailureLocation &&
         componentName == PmbdData[j].ComponentTypeName
       ) {
-        sorteddata.push(PmbdData[j].DegradationMechanism);
+        sorteddata.push(PmbdData[j].DegradationMechanism)
       }
     }
   }
-  sorteddata = _.uniq(sorteddata);
-  return sorteddata;
-};
+  sorteddata = _.uniq(sorteddata)
+  return sorteddata
+}
 
 const CreateDegradationInfluence = (
   componentName,
@@ -53,41 +53,50 @@ const CreateDegradationInfluence = (
   mechanism,
   pmbddata
 ) => {
-  let sorteddata = [];
+  let sorteddata = []
 
-  for (let i = 0; i < mechanism.length; i++) {
-    const mechanismdata = mechanism[i].label;
-    for (let z = 0; z < pmbddata.length; z++) {
-      if (componentName == pmbddata[z].ComponentTypeName) {
-        if (mechanismdata == pmbddata[z].DegradationMechanism) {
-          sorteddata.push(pmbddata[z].DegradationInfluence);
+  for (let j = 0; j < failureoption.length; j++) {
+    const failuredata = failureoption[j] // 선택한 failure option
+    for (let i = 0; i < mechanism.length; i++) {
+      const mechanismdata = mechanism[i].label // 선택한 mechanism
+      for (let z = 0; z < pmbddata.length; z++) {
+        // pmbd데이터로 선택한것들을 찾음
+        if (componentName == pmbddata[z].ComponentTypeName) {
+          if (mechanismdata == pmbddata[z].DegradationMechanism) {
+            console.log(pmbddata[z])
+            console.log(failuredata)
+            console.log(pmbddata[z].FailureLocation)
+            if (failuredata.label == pmbddata[z].FailureLocation) {
+              sorteddata.push(pmbddata[z].DegradationInfluence)
+            }
+          }
         }
       }
     }
   }
-  sorteddata = _.uniq(sorteddata);
-  return sorteddata;
-};
+  sorteddata = _.uniq(sorteddata)
+  return sorteddata
+}
 
-//액션타입설정
-const SELECTCOMPONENTNAME = "ComponentNameListView/SELECTCOMPONENTNAME";
+// 액션타입설정
+const SELECTCOMPONENTNAME = 'ComponentNameListView/SELECTCOMPONENTNAME'
 const SELECTFAILUREOPTION =
-  "ComponentDegradationFailureOption/SelectedFailureOptiondispatch";
-const SELECTMECHANISM = "ComponentDegradationMechanism/SELECTMECHANISM";
+  'ComponentDegradationFailureOption/SelectedFailureOptiondispatch'
+const SELECTMECHANISM = 'ComponentDegradationMechanism/SELECTMECHANISM'
 // 액션생성함수
 export const SelectedComponentdispatch = selectitem => ({
   type: SELECTCOMPONENTNAME,
-  selectitem,
-});
+  selectitem
+})
 
 export const SelectedFailureOptiondispatch = selectitem => ({
   type: SELECTFAILUREOPTION,
-  selectitem,
-});
+  selectitem
+})
 export const SelectedDegradationMechdispatch = selecteditem => ({
   type: SELECTMECHANISM,
-  selecteditem,
-});
+  selecteditem
+})
 
 // 사용자가 컴포넌트이름을 선택할시 발생시켜야됨
 
@@ -96,19 +105,17 @@ export const SelectedDegradationMechdispatch = selecteditem => ({
 const initialState = {
   totaldata: pmbddata,
   componentNamedata: ComponentNameDataCreate(pmbddata),
-  SelectedComponentName: "",
+  SelectedComponentName: '',
   SelectedUserFailureOption: [],
   SelectedUserDegradtionMech: [],
+  SeletedUserInfluence: [],
   SelectedFailureOption: [],
   SelectedMechanism: [],
   SelectedInfluence: [],
-  SelectedMethod: [],
-};
+  SelectedMethod: []
+}
 
 const MainContainer = (state = initialState, action) => {
-  console.log(state);
-  console.log(action);
-
   switch (action.type) {
     case SELECTCOMPONENTNAME:
       return {
@@ -118,8 +125,8 @@ const MainContainer = (state = initialState, action) => {
           pmbddata
         ),
 
-        SelectedComponentName: action.selectitem,
-      };
+        SelectedComponentName: action.selectitem
+      }
     case SELECTFAILUREOPTION:
       return {
         ...state,
@@ -128,8 +135,8 @@ const MainContainer = (state = initialState, action) => {
           action.selectitem,
           pmbddata
         ),
-        SelectedUserFailureOption: action.selectitem,
-      };
+        SelectedUserFailureOption: action.selectitem
+      }
     case SELECTMECHANISM:
       return {
         ...state,
@@ -139,11 +146,11 @@ const MainContainer = (state = initialState, action) => {
           action.selecteditem,
           pmbddata
         ),
-        SelectedUserDegradtionMech: action.selecteditem,
-      };
+        SelectedUserDegradtionMech: action.selecteditem
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default MainContainer;
+export default MainContainer
