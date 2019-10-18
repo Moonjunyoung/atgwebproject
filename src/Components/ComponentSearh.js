@@ -15,11 +15,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ComponentSearch = ({ Searchdispatch }) => {
+const ComponentSearch = ({ Searchdispatch, SeletcedUserDiscoveryMethod }) => {
   const classes = useStyles();
   const onClick = () => {
     console.log("버튼클릭");
-    Searchdispatch();
+    if (SeletcedUserDiscoveryMethod.length == 0) {
+      alert("Data not Chaecking! (Search Fail...)");
+    } else {
+      Searchdispatch();
+      alert("Search Success !!");
+    }
   };
 
   return (

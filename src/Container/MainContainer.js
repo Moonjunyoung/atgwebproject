@@ -40,6 +40,7 @@ const MainContainer = ({
   SelectedDiscoveryMethodsdispatch,
   TableViewData,
   Searchdispatch,
+  SeletcedUserDiscoveryMethod,
 }) => {
   return (
     <>
@@ -68,7 +69,10 @@ const MainContainer = ({
           SelectedDiscoveryMethodsdispatch={SelectedDiscoveryMethodsdispatch}
         />
       </Container>
-      <ComponentSearch Searchdispatch={Searchdispatch}></ComponentSearch>
+      <ComponentSearch
+        Searchdispatch={Searchdispatch}
+        SeletcedUserDiscoveryMethod={SeletcedUserDiscoveryMethod}
+      ></ComponentSearch>
       <ComponentResultView TableViewData={TableViewData} />
     </>
   );
@@ -84,6 +88,7 @@ const mapStateToProps = state => ({
   SelectedMethod: state.MainContainer.SelectedMethod,
   SelectedDiscovery: state.MainContainer.SelectedDiscovery,
   TableViewData: state.MainContainer.TableViewData,
+  SeletcedUserDiscoveryMethod: state.MainContainer.SeletcedUserDiscoveryMethod,
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators(

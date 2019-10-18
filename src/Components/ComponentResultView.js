@@ -316,7 +316,6 @@ class ComponentResultView extends Component {
   }
   render() {
     const totaldata = this.props.TableViewData;
-    console.log(totaldata);
 
     return (
       <MaterialTable
