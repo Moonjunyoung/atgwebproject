@@ -1,30 +1,31 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 import {
   SelectedComponentdispatch,
   SelectedFailureOptiondispatch,
   SelectedDegradationMechdispatch,
   SelectedDegradationInfluncedispatch,
-  SelectedDiscoveryMethodsdispatch
-} from '../modules/MainContainer'
-import { bindActionCreators } from 'redux'
+  SelectedDiscoveryMethodsdispatch,
+  Searchdispatch,
+} from "../modules/MainContainer";
+import { bindActionCreators } from "redux";
 
-import Container from '@material-ui/core/Container'
-import ComponentNameListView from '../Components/ComponentNameListView'
-import ComponentFailureOptionView from '../Components/ComponentFailureOptionView'
-import ComponentDegradationMechanism from '../Components/ComponentDegradationMechanism'
-import ComponentDegradationInfluence from '../Components/ComponentDegradationInfluence'
-import ComponentDiscoveryMethods from '../Components/ComponentDiscoveryMethods'
-import ComponentResultView from '../Components/ComponentResultView'
+import Container from "@material-ui/core/Container";
+import ComponentNameListView from "../Components/ComponentNameListView";
+import ComponentFailureOptionView from "../Components/ComponentFailureOptionView";
+import ComponentDegradationMechanism from "../Components/ComponentDegradationMechanism";
+import ComponentDegradationInfluence from "../Components/ComponentDegradationInfluence";
+import ComponentDiscoveryMethods from "../Components/ComponentDiscoveryMethods";
+import ComponentResultView from "../Components/ComponentResultView";
+import ComponentSearch from "../Components/ComponentSearh";
+import "../css/MainContainer.css";
 
-import '../css/MainContainer.css'
-
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components";
 
 const Title = styled.h1`
   text-align: center;
   color: grey;
-`
+`;
 
 const MainContainer = ({
   ComponentNamedata,
@@ -37,7 +38,8 @@ const MainContainer = ({
   SelectedDegradationInfluncedispatch,
   SelectedDiscovery,
   SelectedDiscoveryMethodsdispatch,
-  TableViewData
+  TableViewData,
+  Searchdispatch,
 }) => {
   return (
     <>
@@ -46,7 +48,7 @@ const MainContainer = ({
         ComponentNamedata={ComponentNamedata}
         SelectedComponentdispatch={SelectedComponentdispatch}
       />
-      <Container id='Mainroot-box'>
+      <Container id="Mainroot-box">
         <ComponentFailureOptionView
           SelectedFailureOption={SelectedFailureOption}
           SelectedFailureOptiondispatch={SelectedFailureOptiondispatch}
@@ -66,11 +68,11 @@ const MainContainer = ({
           SelectedDiscoveryMethodsdispatch={SelectedDiscoveryMethodsdispatch}
         />
       </Container>
-
+      <ComponentSearch Searchdispatch={Searchdispatch}></ComponentSearch>
       <ComponentResultView TableViewData={TableViewData} />
     </>
-  )
-}
+  );
+};
 
 const mapStateToProps = state => ({
   totaldata: state.MainContainer.totaldata,
@@ -81,8 +83,8 @@ const mapStateToProps = state => ({
   SelectedInfluence: state.MainContainer.SelectedInfluence,
   SelectedMethod: state.MainContainer.SelectedMethod,
   SelectedDiscovery: state.MainContainer.SelectedDiscovery,
-  TableViewData:state.MainContainer.TableViewData
-})
+  TableViewData: state.MainContainer.TableViewData,
+});
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
@@ -90,12 +92,13 @@ const mapDispatchToProps = dispatch =>
       SelectedFailureOptiondispatch,
       SelectedDegradationMechdispatch,
       SelectedDegradationInfluncedispatch,
-      SelectedDiscoveryMethodsdispatch
+      SelectedDiscoveryMethodsdispatch,
+      Searchdispatch,
     },
     dispatch
-  )
+  );
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainContainer)
+)(MainContainer);
